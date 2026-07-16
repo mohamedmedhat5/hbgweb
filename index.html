@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamed Balata Group | حامد بلاطة جروب</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+                        slate: { 900: '#0f172a', 800: '#1e293b', 50: '#f8fafc' },
+                        gold: '#C5A059'
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'glow': '0 0 40px -10px rgba(217, 119, 6, 0.3)',
+                    },
+                    screens: {
+                        'xs': '375px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lenis Smooth Scroll CSS -->
+    <style>
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
+    </style>
+
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            overflow-x: hidden; 
+            background-color: #FAFAFA;
+        }
+        
+        /* شريط التمرير */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        /* شاشة التحميل (Preloader) */
+        #preloader {
+            transition: opacity 0.8s ease-in-out, visibility 0.8s;
+        }
+        .loader-bar {
+            animation: loading 1.5s infinite ease-in-out;
+        }
+        @keyframes loading {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* تأثيرات الزجاج (Glassmorphism) */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* ظهور العناصر بنعومة */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ظهور النص كلمة بكلمة (Text Reveal) */
+        .text-reveal-wrapper {
+            overflow: hidden;
+            display: inline-flex;
+        }
+        .text-reveal-item {
+            transform: translateY(110%);
+            transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .text-reveal-item.active {
+            transform: translateY(0);
+        }
+
+        /* تأثيرات الماوس المغناطيسي */
+        .magnetic {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .magnetic.magnetizing {
+            transition: transform 0.1s linear;
+        }
+    </style>
+</head>
+<body class="text-slate-800 relative selection:bg-amber-500 selection:text-white">
+
+    <!-- شاشة التحميل الفخمة (Preloader) -->
+    <div id="preloader" class="fixed inset-0 bg-slate-50 z-[100] flex flex-col items-center justify-center">
+        <img src="HBW logo.png" alt="Loading" class="h-16 md:h-20 mb-6 animate-pulse object-contain">
+        <div class="w-48 h-1 bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full w-full bg-amber-500 rounded-full loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- خلفية مضيئة عائمة -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none parallax-bg" data-speed="0.05">
+        <div class="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-amber-300/15 blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] left-[-5%] w-[40vw] h-[40vw] rounded-full bg-blue-300/10 blur-[100px]"></div>
+    </div>
+
+    <!-- النافبار العائم -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl glass-panel shadow-sm rounded-full z-50 transition-all duration-500 transform -translate-y-20 opacity-0" id="navbar">
+        <div class="px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-white p-1 rounded-full shadow-sm">
+                    <img src="HBW logo.png" alt="HBW Group" class="h-10 md:h-12 w-auto object-contain hover:rotate-3 transition duration-500">
+                </div>
+                <div class="block">
+                    <h1 class="text-lg md:text-xl font-black text-slate-900 leading-none tracking-tight">Hamed Balata <span class="text-amber-600">Group</span></h1>
+                    <p class="text-[10px] text-slate-500 font-bold tracking-wide mt-0.5">من التشطيب.. للفرش</p>
+                </div>
+            </div>
+            <div class="magnetic">
+                <a href="tel:01061571327" class="magnetic-btn bg-slate-900 text-white hidden md:flex items-center gap-2 bg-slate-900 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-amber-600 transition-colors shadow-lg hover:shadow-amber-500/30">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    اتصل بنا
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- الهيرو سيكشن -->
+    <section class="pt-40 pb-16 px-4 md:pt-52 md:pb-28 relative">
+        <div class="container mx-auto flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20">
+            
+            <div class="flex-1 text-center md:text-right z-10">
+                <span class="reveal inline-flex items-center gap-2 bg-white text-amber-700 border border-amber-100 text-xs md:text-sm font-bold px-5 py-2 rounded-full mb-6 shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                    </span>
+                    خبرة 40 عاماً من التميز
+                </span>
+                
+                <h2 class="text-5xl md:text-7xl font-black mb-6 leading-[1.1] text-slate-900 tracking-tight flex flex-wrap justify-center md:justify-start gap-3">
+                    <span class="text-reveal-wrapper"><span class="text-reveal-item delay-100">من</span></span>
+                    <span class="text-reveal-wrapper"><span class="text-reveal-item delay-200">التشطيب</span></span>
+                    <br class="hidden md:block">
+                    <span class="text-reveal-wrapper"><span class="text-reveal-item delay-300 text-transparent bg-clip-text bg-gradient-to-l from-amber-600 via-amber-500 to-yellow-400 drop-shadow-sm">للفرش</span></span>
+                </h2>
+                
+                <p class="reveal text-base md:text-xl text-slate-600 mb-10 px-2 md:px-0 leading-relaxed max-w-2xl font-medium" style="transition-delay: 0.4s;">
+                    رواد تصنيع وتوريد الأبواب المصفحة، الخشبية، والأثاث بأعلى معايير الجودة والفخامة في السوق المصري.
+                </p>
+                
+                <div class="reveal flex flex-col sm:flex-row justify-center md:justify-start gap-4" style="transition-delay: 0.5s;">
+                    <div class="magnetic">
+                        <a href="#services" class="w-full bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-amber-600 transition-all duration-300 shadow-xl shadow-slate-900/20 text-sm md:text-base flex items-center justify-center gap-2">
+                            تصفح المنتجات
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rotate-180"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                    <div class="magnetic">
+                        <a href="#branches" class="w-full bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-full font-bold hover:border-amber-500 hover:text-amber-600 transition-all duration-300 shadow-sm hover:shadow-md text-sm md:text-base flex items-center justify-center">
+                            فروعنا ومواعيدنا
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- سلايدر الصور (تأثير البارالاكس) -->
+            <div class="flex-1 w-full relative max-w-xl mx-auto md:max-w-none parallax" data-speed="0.1">
+                <div class="absolute -inset-4 bg-gradient-to-tr from-amber-500/20 to-slate-400/20 blur-2xl rounded-full"></div>
+                <div class="relative w-full aspect-square rounded-[2.5rem] shadow-2xl shadow-slate-300/50 overflow-hidden border-8 border-white bg-slate-100 transform transition-transform duration-700 hover:scale-[1.02]">
+                    <img src="hero1.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop'" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" alt="Slide 1">
+                    <img src="hero2.jpg" onerror="this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop'" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" alt="Slide 2">
+                    <img src="hero3.jpg" onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop'" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" alt="Slide 3">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section id="services" class="py-20 md:py-32 px-4 relative z-10">
+    <div class="container mx-auto max-w-7xl">
+        
+        <div class="text-center mb-20 reveal">
+            <h3 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">أقسام المجموعة</h3>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-amber-600 to-amber-400 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+            
+            <div class="group reveal flex flex-col bg-white rounded-[2rem] shadow-premium hover:shadow-glow transition-all duration-500 transform hover:-translate-y-2 border border-slate-100/80 overflow-hidden relative" style="transition-delay: 0.1s;">
+                <div class="absolute top-5 left-5 bg-amber-500/90 backdrop-blur-sm text-white text-xs px-4 py-1.5 rounded-full z-10 shadow-lg font-bold border border-white/20">تسليم مفتاح ✨</div>
+                <div class="h-64 bg-slate-50 flex items-center justify-center p-4 overflow-hidden relative">
+                    <img src="finishing.jpg" onerror="this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500&auto=format&fit=crop'" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out">
+                </div>
+                <div class="p-8 flex-1 flex flex-col relative bg-white">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-2xl shadow-sm border border-amber-100/50 text-amber-600">🎨</div>
+                        <h4 class="text-2xl font-bold text-slate-900 tracking-tight">التشطيبات والديكور</h4>
+                    </div>
+                    <p class="text-slate-600 text-sm md:text-base mb-8 leading-relaxed font-medium">تصميم وإشراف وتشطيب متكامل من التأسيس وحتى الفرش بأعلى مستوى تنفيذ.</p>
+                    <div class="mt-auto flex flex-col gap-4">
+                        <div class="magnetic w-full">
+                            <a href="https://drive.google.com/drive/folders/1TVWb-CG0rn4u-l84GSdw0QpCHi6zjduO?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-amber-600 transition-colors shadow-md text-sm">
+                                من تنفيذنا
+                            </a>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <a href="https://wa.me/201552951992" target="_blank" class="flex flex-col items-center justify-center gap-1.5 bg-slate-50 hover:bg-green-50 text-slate-600 hover:text-green-600 border border-slate-100 py-3 rounded-xl font-bold transition-all text-[10px] xl:text-xs">WhatsApp</a>
+                            <a href="https://www.facebook.com/profile.php?id=100078235695003" target="_blank" class="flex flex-col items-center justify-center gap-1.5 bg-slate-50 hover:bg-blue-50 text-slate-600 hover:text-blue-600 border border-slate-100 py-3 rounded-xl font-bold transition-all text-[10px] xl:text-xs">Facebook</a>
+                            <a href="https://www.instagram.com/hb_interiors_zone?igsh=MWVtNHRjbms0dTB5cw==" target="_blank" class="flex flex-col items-center justify-center gap-1.5 bg-slate-50 hover:bg-pink-50 text-slate-600 hover:text-pink-600 border border-slate-100 py-3 rounded-xl font-bold transition-all text-[10px] xl:text-xs">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group reveal flex flex-col bg-white rounded-[2rem] shadow-premium hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-slate-100/80 overflow-hidden relative" style="transition-delay: 0.2s;">
+                <div class="h-64 bg-slate-50 flex items-center justify-center p-4 overflow-hidden relative">
+                <img src="doors.jpg" onerror="this.src='https://images.unsplash.com/photo-1517646331032-9e8563c520a1?w=500&auto=format&fit=crop'" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out">                </div>
+                <div class="p-8 flex-1 flex flex-col relative bg-white">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-2xl shadow-sm border border-slate-100/50">🚪</div>
+                        <h4 class="text-2xl font-bold text-slate-900 tracking-tight">الأبواب والشبابيك</h4>
+                    </div>
+                    <p class="text-slate-600 text-sm md:text-base mb-8 leading-relaxed font-medium">أقوى الأبواب المصفحة للأمان، وتصنيع الأبواب الخشبية الداخلية بأجود أنواع الأخشاب.</p>
+                    <div class="mt-auto flex flex-col gap-4">
+                        <div class="magnetic w-full">
+                            <a href="https://drive.google.com/drive/folders/1rR_rTyBtqfauaJR1bTAmf0Xe_8qN0-HX" target="_blank" class="flex items-center justify-center gap-2 w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-amber-600 transition-colors shadow-md text-sm">
+                                من تنفيذنا
+                            </a>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <a href="https://wa.me/201061571327" target="_blank" class="flex flex-col items-center justify-center gap-1.5 bg-slate-50 hover:bg-green-50 text-slate-600 hover:text-green-600 border border-slate-100 py-3 rounded-xl font-bold transition-all text-[10px] xl:text-xs">WhatsApp</a>
+                            <a href="https://www.facebook.com/profile.php?id=100078436914785" target="_blank" class="flex flex-col items-center justify-center gap-1.5 bg-slate-50 hover:bg-blue-50 text-slate-600 hover:text-blue-600 border border-slate-100 py-3 rounded-xl font-bold transition-all text-[10px] xl:text-xs">Facebook</a>
+                            <a href="https://www.instagram.com/hamed_balata_doors?igsh=bXQ2ZG9yc3d0azRn" target="_blank" class="flex flex-col items-center justify-center gap-1.5 bg-slate-50 hover:bg-pink-50 text-slate-600 hover:text-pink-600 border border-slate-100 py-3 rounded-xl font-bold transition-all text-[10px] xl:text-xs">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group reveal flex flex-col bg-white rounded-[2rem] shadow-premium hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-slate-100/80 overflow-hidden relative" style="transition-delay: 0.3s;">
+                <div class="h-64 bg-slate-50 flex items-center justify-center p-4 overflow-hidden relative">
+                    <img src="furniture.jpg" onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&auto=format&fit=crop'" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out">
+                </div>
+                <div class="p-8 flex-1 flex flex-col relative bg-white">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-2xl shadow-sm border border-slate-100/50">🛋️</div>
+                        <h4 class="text-2xl font-bold text-slate-900 tracking-tight">الموبيليا والمطابخ</h4>
+                    </div>
+                    <p class="text-slate-600 text-sm md:text-base mb-8 leading-relaxed font-medium">تصنيع الأثاث المودرن والكلاسيك، غرف نوم، سفرة، ومطابخ بتصميمات عصرية.</p>
+                    <div class="mt-auto flex flex-col gap-4">
+                        <div class="magnetic w-full">
+                            <a href="https://drive.google.com/drive/folders/1PXlBWEQlZCNwEJE28iqRTinF-jj5Fpdb?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-amber-600 transition-colors shadow-md text-sm">
+                                من تنفيذنا
+                            </a>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <a href="https://wa.me/201098562048" target="_blank" class="flex flex-col items-center justify-center gap-1.5 bg-slate-50 hover:bg-green-50 text-slate-600 hover:text-green-600 border border-slate-100 py-3 rounded-xl font-bold transition-all text-[10px] xl:text-xs">WhatsApp</a>
+                            <a href="https://www.facebook.com/profile.php?id=100078259324259" target="_blank" class="flex flex-col items-center justify-center gap-1.5 bg-slate-50 hover:bg-blue-50 text-slate-600 hover:text-blue-600 border border-slate-100 py-3 rounded-xl font-bold transition-all text-[10px] xl:text-xs">Facebook</a>
+                            <a href="https://www.instagram.com/hamed_balata_woods?igsh=NHBzN2kxZXI4a2lo" target="_blank" class="flex flex-col items-center justify-center gap-1.5 bg-slate-50 hover:bg-pink-50 text-slate-600 hover:text-pink-600 border border-slate-100 py-3 rounded-xl font-bold transition-all text-[10px] xl:text-xs">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- الفروع -->
+<section id="branches" class="py-20 md:py-32 px-4 relative overflow-hidden">
+
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMCwwLDAsMC4wNSkiLz48L3N2Zz4=')] [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] -z-10"></div>
+
+    <div class="container mx-auto max-w-5xl relative z-10">
+        <div class="text-center mb-16 reveal">
+            <h3 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">فروعنا ومواعيد العمل</h3>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-amber-600 to-amber-400 mx-auto rounded-full mb-8"></div>
+            <div class="inline-flex items-center gap-3 bg-red-50/80 backdrop-blur-sm text-red-700 px-6 py-3 rounded-2xl border border-red-100 shadow-sm">
+                <span class="text-xl">⚠️</span>
+                <span class="font-bold text-sm md:text-base">تنويه: هذه هي فروعنا الوحيدة، وليس لنا وكلاء آخرون.</span>
+            </div>
+        </div>
+
+        <!-- الكروت -->
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- الفرع الأول -->
+            <div class="group reveal flex flex-col bg-white rounded-[2rem] shadow-premium hover:shadow-2xl transition-all duration-500 border border-slate-100/80 overflow-hidden p-2" style="transition-delay: 0.1s;">
+                <div class="h-56 rounded-t-[1.5rem] overflow-hidden relative">
+                    <div class="absolute top-4 right-4 bg-amber-500 text-white text-[10px] md:text-xs px-4 py-1.5 rounded-full z-10 shadow-lg font-bold">متخصص تشطيب ومطابخ</div>
+                    <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition duration-500 z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="bg-white/90 backdrop-blur-md p-4 rounded-full shadow-2xl transform scale-90 group-hover:scale-100 transition duration-300">
+                            <span class="text-2xl">📍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 md:p-8 flex-1 flex flex-col">
+                    <h4 class="text-2xl font-bold text-slate-900 mb-6 tracking-tight">الفرع الأول: البر الشرقي</h4>
+                    <div class="space-y-5 text-sm text-slate-600 mb-8 flex-1">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100"><span class="text-lg">🗺️</span></div>
+                            <p class="font-bold pt-2 leading-relaxed text-slate-800">نزلة الكبري العلوي - ناصية ش عبدالقادر شتلة (فوق مشلان)</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center shrink-0 border border-amber-100"><span class="text-lg">✨</span></div>
+                            <p class="pt-2 leading-relaxed"><strong>المعروضات:</strong> مطابخ، انتريهات، ركن، صالونات، والمكتب الفني للتشطيبات.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100"><span class="text-lg">🕒</span></div>
+                            <div class="pt-2">
+                                <p class="mb-1"><span class="font-bold text-slate-800">السبت - الخميس:</span> ١٢ ظهراً - ١٠ مساءً</p>
+                                <p><span class="font-bold text-slate-800">الجمعة:</span> ٣ عصراً - ١٠ مساءً</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="magnetic w-full">
+                        <a href="https://maps.app.goo.gl/cf3Cn2tpzAQRbc7K7" target="_blank" class="flex items-center justify-center gap-2 w-full bg-slate-50 text-slate-900 py-4 rounded-2xl font-bold hover:bg-slate-900 hover:text-white transition-colors duration-300 border border-slate-200 hover:border-transparent">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            الموقع على الخريطة
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الفرع الثاني -->
+            <div class="group reveal flex flex-col bg-white rounded-[2rem] shadow-premium hover:shadow-2xl transition-all duration-500 border border-slate-100/80 overflow-hidden p-2" style="transition-delay: 0.2s;">
+                <div class="h-56 rounded-t-[1.5rem] overflow-hidden relative">
+                    <div class="absolute top-4 right-4 bg-slate-800 text-white text-[10px] md:text-xs px-4 py-1.5 rounded-full z-10 shadow-lg font-bold">متخصص أبواب وغرف</div>
+                    <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition duration-500 z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="bg-white/90 backdrop-blur-md p-4 rounded-full shadow-2xl transform scale-90 group-hover:scale-100 transition duration-300">
+                            <span class="text-2xl">📍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 md:p-8 flex-1 flex flex-col">
+                    <h4 class="text-2xl font-bold text-slate-900 mb-6 tracking-tight">الفرع الثاني: السلطان حسين</h4>
+                    <div class="space-y-5 text-sm text-slate-600 mb-8 flex-1">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100"><span class="text-lg">🗺️</span></div>
+                            <p class="font-bold pt-2 leading-relaxed text-slate-800">شارع السلطان حسين (الجلاء القبلى) - شبين الكوم</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center shrink-0 border border-amber-100"><span class="text-lg">✨</span></div>
+                            <p class="pt-2 leading-relaxed"><strong>المعروضات:</strong> الأبواب المصفحة والداخلية - غرف (ماستر، شباب، أطفال، سفرة).</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100"><span class="text-lg">🕒</span></div>
+                            <div class="pt-2">
+                                <p class="mb-1"><span class="font-bold text-slate-800">السبت - الخميس:</span> ١٠ صباحاً - ١٠ مساءً</p>
+                                <p><span class="font-bold text-slate-800">الجمعة:</span> ٣ عصراً - ١٠ مساءً</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="magnetic w-full">
+                        <a href="https://maps.app.goo.gl/4EL1ctvxU5VccWZH6" target="_blank" class="flex items-center justify-center gap-2 w-full bg-slate-50 text-slate-900 py-4 rounded-2xl font-bold hover:bg-slate-900 hover:text-white transition-colors duration-300 border border-slate-200 hover:border-transparent">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            الموقع على الخريطة
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- زرار تواصل إضافي -->
+        <div class="text-center mt-16 reveal">
+            <div class="magnetic">
+                <a href="tel:01061571327" class="inline-flex items-center justify-center gap-4 bg-white border border-slate-200 px-10 py-5 rounded-full shadow-premium hover:shadow-xl hover:border-amber-400 text-slate-600 hover:text-amber-600 font-bold transition-all duration-300 group">
+                    <div class="bg-slate-50 p-3 rounded-full group-hover:bg-amber-50 transition-colors">
+                        <span class="text-2xl">📞</span>
+                    </div>
+                    <span class="text-lg md:text-xl tracking-wide">للاستفسار: ٠١٠٦١٥٧١٣٢٧</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- الفوتر -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center border-t-4 border-amber-500">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-black text-white mb-3 tracking-tight">Hamed Balata <span class="text-amber-500">Group</span></h2>
+            <p class="text-slate-400 text-sm md:text-base mb-6 font-medium">من التشطيب.. للفرش</p>
+            <div class="h-px w-24 bg-slate-800 mx-auto mb-6"></div>
+            <p class="text-xs text-slate-500 font-medium">جميع الحقوق محفوظة © 2026</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. Preloader ---
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                    
+                    // تحريك النافبار لتحت بعد التحميل
+                    const navbar = document.getElementById('navbar');
+                    navbar.classList.remove('-translate-y-20', 'opacity-0');
+                    navbar.classList.add('translate-y-0', 'opacity-100');
+
+                    // تشغيل انيميشن النصوص (Text Reveal)
+                    document.querySelectorAll('.text-reveal-item').forEach(item => {
+                        item.classList.add('active');
+                    });
+                }, 1000); // الشاشة هتختفي بعد ثانية من تحميل الموقع
+            });
+
+            // --- 2. Lenis Smooth Scroll ---
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smooth: true
+            });
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            // --- 3. Fade Slider ---
+            const slides = document.querySelectorAll('.hero-slide');
+            if (slides.length > 0) {
+                let currentSlide = 0;
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('opacity-100');
+                    slides[currentSlide].classList.add('opacity-0');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.remove('opacity-0');
+                    slides[currentSlide].classList.add('opacity-100');
+                }, 5000);
+            }
+
+            // --- 4. Scroll Reveal ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // --- 5. Parallax Effect ---
+            const parallaxElements = document.querySelectorAll('.parallax, .parallax-bg, .parallax-img');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                parallaxElements.forEach(el => {
+                    const speed = el.getAttribute('data-speed') || 0.1;
+                    const yPos = -(scrolled * speed);
+                    el.style.transform = `translateY(${yPos}px)`;
+                });
+            });
+
+            // --- 6. Magnetic Buttons ---
+            // --- التعديل الجذري لمنع هروب الأزرار ---
+const magneticContainers = document.querySelectorAll('.magnetic-container');
+
+magneticContainers.forEach(container => {
+    const btn = container.querySelector('.magnetic-btn');
+    
+    container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        // الحسابات هنا بتتم بالنسبة لمركز الحاوية الثابتة
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        // هنا الزرار بيتحرك بس جوه الحاوية بمسافة بسيطة (x*0.2) عشان ميهربش
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        btn.style.transition = 'transform 0.1s ease-out';
+    });
+
+    container.addEventListener('mouseleave', () => {
+        // لما الماوس يبعد، الزرار يرجع مكانه في النص بنعومة
+        btn.style.transform = 'translate(0, 0)';
+        btn.style.transition = 'transform 0.5s ease-out';
+    });
+});
+
+        });
+    </script>
+</body>
+</html>
