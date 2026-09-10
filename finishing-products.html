@@ -46,8 +46,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
+        /* خط العناوين الكبيرة (Madika Arabic - نسخة تجريبية مؤقتة، ستُستبدل بالنسخة الكاملة) */
+        @font-face {
+            font-family: 'Madika Arabic';
+            src: url('fonts/MadikaArabic-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Madika Arabic';
+            src: url('fonts/MadikaArabic-Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        .font-heading {
+            font-family: 'Madika Arabic', 'Cairo', sans-serif;
+            font-weight: 700;
+        }
+    </style>
+
+    <style>
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Madika Arabic', 'Cairo', sans-serif; font-weight: 500;
             overflow-x: hidden;
             background-color: #FAFAFA;
         }
@@ -94,7 +116,7 @@
                     <img src="HBW logo.png" alt="شعار Hamed Balata Group" class="h-10 md:h-12 w-auto object-contain">
                 </div>
                 <div class="block">
-                    <h1 class="text-lg md:text-xl font-black text-slate-900 leading-none tracking-tight">Hamed Balata <span class="text-amber-600">Group</span></h1>
+                    <h1 class="font-heading text-lg md:text-xl font-black text-slate-900 leading-none tracking-tight">Hamed Balata <span class="text-amber-600">Group</span></h1>
                     <p class="text-[10px] text-slate-500 font-bold tracking-wide mt-0.5">من التشطيب.. للفرش</p>
                 </div>
             </a>
@@ -123,7 +145,7 @@
             </a>
             <div class="reveal active flex items-center gap-4 mb-4">
                 <div class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-3xl shadow-sm border border-slate-100/50 text-amber-600">🎨</div>
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">التشطيبات والديكور</h2>
+                <h2 class="font-heading text-3xl md:text-5xl font-black text-slate-900 tracking-tight">التشطيبات والديكور</h2>
             </div>
             <p class="reveal active text-slate-600 text-base md:text-lg leading-relaxed font-medium max-w-2xl">
                 تصميم وإشراف وتشطيب متكامل من التأسيس وحتى الفرش بأعلى مستوى تنفيذ. اختر المنتج لمشاهدة الأعمال والمعروضات الخاصة به.
@@ -181,7 +203,7 @@
     <!-- الفوتر -->
     <footer class="bg-slate-900 text-slate-400 py-12 text-center border-t-4 border-amber-500">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-black text-white mb-3 tracking-tight">Hamed Balata <span class="text-amber-500">Group</span></h2>
+            <h2 class="font-heading text-3xl font-black text-white mb-3 tracking-tight">Hamed Balata <span class="text-amber-500">Group</span></h2>
             <p class="text-slate-400 text-sm md:text-base mb-6 font-medium">من التشطيب.. للفرش</p>
             <div class="h-px w-24 bg-slate-800 mx-auto mb-6"></div>
             <p class="text-xs text-slate-500 font-medium">جميع الحقوق محفوظة © 2026</p>
